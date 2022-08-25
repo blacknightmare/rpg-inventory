@@ -28,7 +28,6 @@ public class user {
     public user() {
 
     }
-
     public user(String firstName, String lastName, String username, String password, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
