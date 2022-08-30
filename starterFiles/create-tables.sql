@@ -4,7 +4,7 @@ USE `rpg_helper`;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id_user` int(11) AUTO_INCREMENT PRIMARY KEY,
+  `user_id` int(11) AUTO_INCREMENT PRIMARY KEY,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `username` varchar(45) NOT NULL,
@@ -18,18 +18,19 @@ INSERT INTO `user` (first_name, last_name, username, password, email)VALUES
 	('Mary','Jane', 'm.jane', 'test123', 'mary@luv2code.com');
 
 
+DROP TABLE IF EXISTS `characters`;
 CREATE TABLE `rpg_helper`.`characters` (
-   `id_characters` INT NOT NULL AUTO_INCREMENT,
+   `characters_id` INT AUTO_INCREMENT,
    `name` VARCHAR(45) NOT NULL,
    `race` VARCHAR(45) NOT NULL,
    `encumbrance` INT NOT NULL,
    `flag_active` INT(1) NULL DEFAULT 0,
    `flag_dead` INT(1) NULL DEFAULT 0,
-   `id_user` INT NULL,
-   PRIMARY KEY (`id_characters`),
-   INDEX `id_user_idx` (`id_user` ASC) VISIBLE,
+   `user_id` INT NULL,
+   PRIMARY KEY (`characters_id`),
+   INDEX `id_user_idx` (`user_id` ASC) VISIBLE,
    CONSTRAINT `id_user`
-       FOREIGN KEY (`id_user`)
-           REFERENCES `rpg_helper`.`user` (`id_user`)
+       FOREIGN KEY (`user_id`)
+           REFERENCES `rpg_helper`.`user` (`user_id`)
            ON DELETE NO ACTION
            ON UPDATE NO ACTION);

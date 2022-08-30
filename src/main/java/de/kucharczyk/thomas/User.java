@@ -5,12 +5,13 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table
-public class user {
+@Table(name = "user")
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_user;
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;
 
     private String firstName;
 
@@ -25,10 +26,19 @@ public class user {
     @NotNull
     private String email;
 
-    public user() {
+    public User() {
 
     }
-    public user(String firstName, String lastName, String username, String password, String email) {
+    public User(int userId, String firstName, String lastName, String username, String password, String email) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public User(String firstName, String lastName, String username, String password, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -39,7 +49,7 @@ public class user {
     @Override
     public String toString() {
         return "user{" +
-                "id_user=" + id_user +
+                "user_id=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
@@ -48,8 +58,8 @@ public class user {
                 '}';
     }
 
-    public int getId_user() {
-        return id_user;
+    public int getUserId() {
+        return userId;
     }
 
     public String getFirstName() {
@@ -90,5 +100,9 @@ public class user {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
