@@ -35,7 +35,8 @@ public class PlayerCharacter {
     @Temporal(TemporalType.TIMESTAMP)
     private Date datetimeAdd = new Date();
 
-    @ManyToOne
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="user_id")
     public User user;
 
