@@ -49,3 +49,30 @@ CREATE TABLE `npc` (
 
                                ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `rpg_helper`.`bag` (
+    `bag_id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(45) NULL,
+    `size` FLOAT NULL,
+    `flag_active` INT NULL,
+    `character_id` INT NULL,
+    PRIMARY KEY (`bag_id`),
+    CONSTRAINT `FK_pc_bag`
+        FOREIGN KEY (`character_id`)
+            REFERENCES `rpg_helper`.`player_character` (`character_id`));
+
+
+CREATE TABLE `rpg_helper`.`item` (
+     `item_id` INT NOT NULL AUTO_INCREMENT,
+     `name` VARCHAR(45) NOT NULL,
+     `description` VARCHAR(255) NULL,
+     `weight` FLOAT NULL,
+     `type` INT NULL,
+     `comment` VARCHAR(255) NULL,
+     `flag_active` INT NULL,
+     `bag_id` INT NULL,
+     PRIMARY KEY (`item_id`),
+     INDEX `FK_bag_item_idx` (`bag_id` ASC) VISIBLE,
+     CONSTRAINT `FK_bag_item`
+         FOREIGN KEY (`bag_id`)
+             REFERENCES `rpg_helper`.`bag` (`bag_id`));
