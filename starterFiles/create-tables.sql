@@ -12,25 +12,40 @@ CREATE TABLE `user` (
   `email` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `user` (first_name, last_name, username, password, email)VALUES
-	('David','Adams', 'd.adams', 'test123', 'david@luv2code.com'),
-	('John','Doe', 'j.doe', 'test123', 'john@luv2code.com'),
-	('Mary','Jane', 'm.jane', 'test123', 'mary@luv2code.com');
 
 
-DROP TABLE IF EXISTS `characters`;
-CREATE TABLE `rpg_helper`.`characters` (
-   `characters_id` INT AUTO_INCREMENT,
-   `name` VARCHAR(45) NOT NULL,
-   `race` VARCHAR(45) NOT NULL,
-   `encumbrance` INT NOT NULL,
-   `flag_active` INT(1) NULL DEFAULT 0,
-   `flag_dead` INT(1) NULL DEFAULT 0,
-   `user_id` INT NULL,
-   PRIMARY KEY (`characters_id`),
-   INDEX `id_user_idx` (`user_id` ASC) VISIBLE,
-   CONSTRAINT `id_user`
-       FOREIGN KEY (`user_id`)
-           REFERENCES `rpg_helper`.`user` (`user_id`)
-           ON DELETE NO ACTION
-           ON UPDATE NO ACTION);
+DROP TABLE IF EXISTS `player_character`;
+CREATE TABLE `rpg_helper`.`player_character` (
+  `character_id` INT AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `race` VARCHAR(45) DEFAULT 'human',
+  `carry_weight` INT NOT NULL DEFAULT 10,
+  `flag_active` INT(1) NULL DEFAULT 0,
+  `flag_dead` INT(1) NULL DEFAULT 0,
+  `datetime_add` DATE,
+  `user_id` INT NULL,
+  PRIMARY KEY (`character_id`),
+  CONSTRAINT `FK_user_character` FOREIGN KEY (`user_id`)
+      REFERENCES `rpg_helper`.`user` (`user_id`)) AUTO_INCREMENT=1 CHARSET=latin1;
+
+describe `player_character`;
+
+
+DROP TABLE IF EXISTS `npc`;
+CREATE TABLE `npc` (
+                       `id` int(11) NOT NULL AUTO_INCREMENT,
+                       `name` varchar(128) DEFAULT NULL,
+                       `user_id` int(11) DEFAULT NULL,
+
+                       PRIMARY KEY (`id`),
+
+                       UNIQUE KEY `TITLE_UNIQUE` (`name`),
+
+                       KEY `FK_INSTRUCTOR_idx` (`user_id`),
+
+                       CONSTRAINT `FK_USER_NPC`
+                           FOREIGN KEY (`user_id`)
+                               REFERENCES `user` (`user_id`)
+
+                               ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

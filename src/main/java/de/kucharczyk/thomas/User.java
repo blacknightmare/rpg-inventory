@@ -3,6 +3,8 @@ package de.kucharczyk.thomas;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -13,26 +15,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "username")
     @NotNull
     private String username;
 
+    @Column(name = "password")
     @NotNull
     private String password;
 
+    @Column(name = "email")
     @NotNull
     private String email;
 
-    public User() {
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<PlayerCharacter> playerCharacters = new ArrayList<PlayerCharacter>();
 
-    }
-    public User(int userId, String firstName, String lastName, String username, String password, String email) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    @OneToMany(mappedBy = "user",cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Npc> npcList;
+
+
+    public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -46,10 +55,22 @@ public class User {
         this.email = email;
     }
 
+    public User() {
+        super();
+    }
+
+    public List<PlayerCharacter> getCharacters() {
+        return playerCharacters;
+    }
+
+    public void setCharacters(List<PlayerCharacter> playerCharacters) {
+        this.playerCharacters = playerCharacters;
+    }
+
     @Override
     public String toString() {
         return "user{" +
-                "user_id=" + userId +
+                "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
@@ -102,7 +123,32 @@ public class User {
         this.email = email;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public List<Npc> getNpcList() {
+        return npcList;
+    }
+
+    public void setNpcList(List<Npc> npcList) {
+        this.npcList = npcList;
+    }
+
+    public void add(Npc tempNpc) {
+
+        if (npcList == null) {
+            npcList = new ArrayList<>();
+        }
+
+        npcList.add(tempNpc);
+
+        tempNpc.setUser(this);
+    }
+    public void add(PlayerCharacter tempPChara) {
+
+        if (playerCharacters == null) {
+            playerCharacters = new ArrayList<>();
+        }
+
+        playerCharacters.add(tempPChara);
+
+        tempPChara.setUser(this);
     }
 }
