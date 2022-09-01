@@ -32,6 +32,7 @@ public class Bag {
             cascade= {CascadeType.ALL})
     private List<Item> itemList;
 
+
     public Bag() {
     }
 

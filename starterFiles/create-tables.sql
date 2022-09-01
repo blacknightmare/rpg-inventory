@@ -33,19 +33,19 @@ describe `player_character`;
 
 DROP TABLE IF EXISTS `npc`;
 CREATE TABLE `npc` (
-                       `id` int(11) NOT NULL AUTO_INCREMENT,
-                       `name` varchar(128) DEFAULT NULL,
-                       `user_id` int(11) DEFAULT NULL,
+       `id` int(11) NOT NULL AUTO_INCREMENT,
+       `name` varchar(128) DEFAULT NULL,
+       `user_id` int(11) DEFAULT NULL,
 
-                       PRIMARY KEY (`id`),
+       PRIMARY KEY (`id`),
 
-                       UNIQUE KEY `TITLE_UNIQUE` (`name`),
+       UNIQUE KEY `TITLE_UNIQUE` (`name`),
 
-                       KEY `FK_INSTRUCTOR_idx` (`user_id`),
+       KEY `FK_INSTRUCTOR_idx` (`user_id`),
 
-                       CONSTRAINT `FK_USER_NPC`
-                           FOREIGN KEY (`user_id`)
-                               REFERENCES `user` (`user_id`)
+       CONSTRAINT `FK_USER_NPC`
+           FOREIGN KEY (`user_id`)
+               REFERENCES `user` (`user_id`)
 
                                ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -53,7 +53,7 @@ CREATE TABLE `npc` (
 CREATE TABLE `rpg_helper`.`bag` (
     `bag_id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NULL,
-    `size` FLOAT NULL,
+    `size` DOUBLE NULL,
     `flag_active` INT NULL,
     `character_id` INT NULL,
     PRIMARY KEY (`bag_id`),
@@ -66,8 +66,10 @@ CREATE TABLE `rpg_helper`.`item` (
      `item_id` INT NOT NULL AUTO_INCREMENT,
      `name` VARCHAR(45) NOT NULL,
      `description` VARCHAR(255) NULL,
-     `weight` FLOAT NULL,
-     `type` INT NULL,
+     `weight` DOUBLE NULL,
+     `gold_value` DOUBLE NULL,
+     `type` VARCHAR(45) NULL,
+     `rarity` VARCHAR(45) NULL,
      `comment` VARCHAR(255) NULL,
      `flag_active` INT NULL,
      `bag_id` INT NULL,
@@ -76,3 +78,17 @@ CREATE TABLE `rpg_helper`.`item` (
      CONSTRAINT `FK_bag_item`
          FOREIGN KEY (`bag_id`)
              REFERENCES `rpg_helper`.`bag` (`bag_id`));
+
+CREATE TABLE `rpg_helper`.`attack_properties` (
+  `item_attack_id` INT NOT NULL AUTO_INCREMENT,
+  `damage_type` VARCHAR(45) NULL,
+  `dice_count` INT NULL,
+  `dice_sides` INT NULL,
+  `weapon_type` VARCHAR(45) NULL,
+  `attack_range` INT NULL,
+  `item_id` INT NULL,
+  PRIMARY KEY (`item_attack_id`),
+  INDEX `FK_item_weapon_idx` (`item_id` ASC) VISIBLE,
+  CONSTRAINT `FK_item_weapon`
+      FOREIGN KEY (`item_id`)
+          REFERENCES `rpg_helper`.`item` (`item_id`));

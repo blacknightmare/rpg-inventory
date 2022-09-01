@@ -1,6 +1,7 @@
 package de.kucharczyk.thomas.inventory;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "item")
@@ -35,6 +36,13 @@ public class Item {
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "bag_id")
     private Bag bag;
+
+    @OneToMany(mappedBy = "item", cascade= {CascadeType.ALL})
+    private List<Specification> spezificationList;
+
+
+
+
 
     public Item() {
     }

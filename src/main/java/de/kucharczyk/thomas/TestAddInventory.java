@@ -7,6 +7,8 @@ import de.kucharczyk.thomas.inventory.ItemType;
 import de.kucharczyk.thomas.roles.PlayerCharacter;
 import org.hibernate.Session;
 
+import java.util.List;
+
 public class TestAddInventory {
 
     public static void main(String[] args) {
@@ -57,19 +59,19 @@ public class TestAddInventory {
 //            }
 
             // Test 5 adding items
-//            Bag tempBag = session.get(Bag.class, 2);
-//            System.out.println("ID: "+ tempBag.getPlayerCharacter().getCharacterId() + " - Name: " + tempBag.getPlayerCharacter().getName());
+            Bag tempBag = session.get(Bag.class, 2);
+            System.out.println("ID: "+ tempBag.getPlayerCharacter().getCharacterId() + " - Name: " + tempBag.getPlayerCharacter().getName());
+
+            System.out.println("Lonk wishes to add a boot, a stone, a magic sword to his backpack!");
 //
-//            System.out.println("Lonk wishes to add a boot, a stone, a magic sword to his backpack!");
-//
-//            Item boot = new Item("woodboot", "simple boot of wood", 4.15, ItemType.MUNDANE, ItemRarity.COMMON);
-//            Item stone = new Item("Stone", "can be thrown", 1.44, ItemType.MISCELLANEOUS, ItemRarity.COMMON);
-//            Item magicSword = new Item("magical Sword", "a sword that glows in the dark", 6.79, ItemType.WEAPON, ItemRarity.UNCOMMON);
-//
-//            tempBag.add(boot);
-//            tempBag.add(stone);
-//            tempBag.add(magicSword);
-//            tempBag.add(boot);
+            Item boot = new Item("woodboot", "simple boot of wood", 4.15, ItemType.MUNDANE, ItemRarity.COMMON);
+            Item stone = new Item("Stone", "can be thrown", 1.44, ItemType.MUNDANE, ItemRarity.COMMON);
+            Item magicSword = new Item("magical Sword", "a sword that glows in the dark", 6.79, ItemType.WEAPON, ItemRarity.UNCOMMON);
+
+            tempBag.add(boot);
+            tempBag.add(stone);
+            tempBag.add(magicSword);
+            tempBag.add(boot);
 
             Item tempStone = session.get(Item.class, 2);
             tempStone.setType(ItemType.MUNDANE);
@@ -81,6 +83,8 @@ public class TestAddInventory {
             session.getTransaction().commit();
 
             System.out.println("Bag Saved!");
+
+            List<?> test;
 
 
 
