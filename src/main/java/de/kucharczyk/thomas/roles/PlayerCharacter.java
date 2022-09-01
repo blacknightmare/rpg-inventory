@@ -1,10 +1,15 @@
-package de.kucharczyk.thomas;
+package de.kucharczyk.thomas.roles;
 
 import com.sun.istack.NotNull;
+import de.kucharczyk.thomas.User;
+import de.kucharczyk.thomas.inventory.Bag;
+import de.kucharczyk.thomas.inventory.Item;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "player_character")
@@ -25,7 +30,7 @@ public class PlayerCharacter {
     @ColumnDefault("10")
     private int carryWeight = 10;
 
-    @Column(name = "flage_dead")
+    @Column(name = "flag_dead")
     private int flagDead = 0;
 
     @Column(name = "flag_active")
@@ -39,6 +44,9 @@ public class PlayerCharacter {
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="user_id")
     public User user;
+
+    @OneToMany(mappedBy = "playerCharacter",cascade= {CascadeType.ALL})
+    private List<Bag> bagList;
 
 
     public PlayerCharacter() {
@@ -102,6 +110,28 @@ public class PlayerCharacter {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Bag> getBagList() {
+        return bagList;
+    }
+
+    public void setBagList(List<Bag> bagList) {
+        this.bagList = bagList;
+    }
+
+    public void add(Bag tempBag) {
+
+        if (bagList == null) {
+            bagList = new ArrayList<>();
+        }
+
+        bagList.add(tempBag);
+
+        System.out.println("!!!!!!!!!!!!!!!!!\n\n"
+        + tempBag.getName() + " \n\n !!!!!!!!!!!!!!!!!");
+
+        tempBag.setPlayerCharacter(this);
     }
 
     @Override

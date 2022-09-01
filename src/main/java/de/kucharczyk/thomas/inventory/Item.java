@@ -1,4 +1,4 @@
-package de.kucharczyk.thomas;
+package de.kucharczyk.thomas.inventory;
 
 import javax.persistence.*;
 
@@ -15,14 +15,21 @@ public class Item {
 
     private String description;
 
-    private float weight;
+    private double weight;
 
-    private int type;
+    @Column(name = "gold_value")
+    private double goldValue;
+
+    @Enumerated(EnumType.STRING)
+    private ItemType type;
+
+    @Enumerated(EnumType.STRING)
+    private ItemRarity rarity;
 
     private String comment;
 
     @Column(name = "flag_active")
-    private int flagActive;
+    private int flagActive = 1;
 
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
@@ -32,11 +39,12 @@ public class Item {
     public Item() {
     }
 
-    public Item(String name, String description, float weight, int type) {
+    public Item(String name, String description, double weight, ItemType type, ItemRarity rarity) {
         this.name = name;
         this.description = description;
         this.weight = weight;
         this.type = type;
+        this.rarity = rarity;
     }
 
     public int getItemId() {
@@ -59,20 +67,28 @@ public class Item {
         this.description = description;
     }
 
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getType() {
+    public ItemType getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(ItemType type) {
         this.type = type;
+    }
+
+    public ItemRarity getRarity() {
+        return rarity;
+    }
+
+    public void setRarity(ItemRarity rarity) {
+        this.rarity = rarity;
     }
 
     public String getComment() {
@@ -89,6 +105,14 @@ public class Item {
 
     public void setFlagActive(int flagActive) {
         this.flagActive = flagActive;
+    }
+
+    public double getGoldValue() {
+        return goldValue;
+    }
+
+    public void setGoldValue(double goldValue) {
+        this.goldValue = goldValue;
     }
 
     public Bag getBag() {

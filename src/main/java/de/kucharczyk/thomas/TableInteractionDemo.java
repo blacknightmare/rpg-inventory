@@ -1,5 +1,6 @@
 package de.kucharczyk.thomas;
 
+import de.kucharczyk.thomas.roles.PlayerCharacter;
 import org.hibernate.Session;
 
 import java.util.Date;

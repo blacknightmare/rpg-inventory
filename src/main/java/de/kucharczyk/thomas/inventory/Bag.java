@@ -1,6 +1,6 @@
-package de.kucharczyk.thomas;
+package de.kucharczyk.thomas.inventory;
 
-import de.kucharczyk.thomas.coursestuff.Course;
+import de.kucharczyk.thomas.roles.PlayerCharacter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,10 +18,10 @@ public class Bag {
     @Column(name = "name")
     private String name;
 
-    private float size;
+    private double size;
 
     @Column(name = "flag_active")
-    private int flagActive;
+    private int flagActive = 1;
 
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
@@ -29,8 +29,7 @@ public class Bag {
     private PlayerCharacter playerCharacter;
 
     @OneToMany(mappedBy = "bag",
-            cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-                    CascadeType.DETACH, CascadeType.REFRESH})
+            cascade= {CascadeType.ALL})
     private List<Item> itemList;
 
     public Bag() {
@@ -40,10 +39,9 @@ public class Bag {
         this.name = name;
     }
 
-    public Bag(String name, float size, int flagActive) {
+    public Bag(String name, double size) {
         this.name = name;
         this.size = size;
-        this.flagActive = flagActive;
     }
 
     public int getBagId() {
@@ -58,11 +56,11 @@ public class Bag {
         this.name = name;
     }
 
-    public float getSize() {
+    public double getSize() {
         return size;
     }
 
-    public void setSize(float size) {
+    public void setSize(double size) {
         this.size = size;
     }
 

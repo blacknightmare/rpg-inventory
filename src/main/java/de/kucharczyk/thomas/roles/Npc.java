@@ -1,4 +1,6 @@
-package de.kucharczyk.thomas;
+package de.kucharczyk.thomas.roles;
+
+import de.kucharczyk.thomas.User;
 
 import javax.persistence.*;
 
