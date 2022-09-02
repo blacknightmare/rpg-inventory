@@ -1,18 +1,17 @@
 package de.kucharczyk.thomas.inventory;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
-@MappedSuperclass
+// old table used for later experimenting
+
 //@Entity
 //@Table(name = "item")
-public abstract class Item implements Serializable {
-//public abstract class Item implements Serializable {
+public class ItemOld {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_id", unique = true, nullable = false, updatable = false, columnDefinition = "uniqueidentifier")
+    @Column(name = "item_id")
     private int itemId;
 
     private String name;
@@ -35,25 +34,27 @@ public abstract class Item implements Serializable {
     @Column(name = "flag_active")
     private int flagActive = 1;
 
-    @Column(name = "timestamp_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date timestampUpdate = new Date();
-
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "bag_id")
     private Bag bag;
 
+    @OneToMany(mappedBy = "item", cascade= {CascadeType.ALL})
+    private List<Specification> spezificationList;
 
-//    public Item() {
-//    }
 
 
-    public Item(String name, String description, double weight, ItemType type) {
+
+
+    public ItemOld() {
+    }
+
+    public ItemOld(String name, String description, double weight, ItemType type, ItemRarity rarity) {
         this.name = name;
         this.description = description;
         this.weight = weight;
         this.type = type;
+        this.rarity = rarity;
     }
 
     public int getItemId() {
@@ -145,10 +146,4 @@ public abstract class Item implements Serializable {
                 ", bag=" + bag +
                 '}';
     }
-
-    @PrePersist
-    public void setUpdateTimestamp() {
-        timestampUpdate = new Date();
-    }
-
 }

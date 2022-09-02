@@ -30,7 +30,7 @@ public class Bag {
 
     @OneToMany(mappedBy = "bag",
             cascade= {CascadeType.ALL})
-    private List<Item> itemList;
+    private List<ItemMundane> itemList;
 
 
     public Bag() {
@@ -81,15 +81,15 @@ public class Bag {
         this.playerCharacter = playerCharacter;
     }
 
-    public List<Item> getItemList() {
+    public List<ItemMundane> getItemList() {
         return itemList;
     }
 
-    public void setItemList(List<Item> itemList) {
+    public void setItemList(List<ItemMundane> itemList) {
         this.itemList = itemList;
     }
 
-    public void add(Item tempItem) {
+    public void add(ItemMundane tempItem) {
 
         if (itemList == null) {
             itemList = new ArrayList<>();

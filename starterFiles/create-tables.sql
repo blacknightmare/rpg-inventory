@@ -72,12 +72,37 @@ CREATE TABLE `rpg_helper`.`item` (
      `rarity` VARCHAR(45) NULL,
      `comment` VARCHAR(255) NULL,
      `flag_active` INT NULL,
+    `timestamp_update` DATETIME NULL,
      `bag_id` INT NULL,
      PRIMARY KEY (`item_id`),
      INDEX `FK_bag_item_idx` (`bag_id` ASC) VISIBLE,
      CONSTRAINT `FK_bag_item`
          FOREIGN KEY (`bag_id`)
              REFERENCES `rpg_helper`.`bag` (`bag_id`));
+
+CREATE TABLE `rpg_helper`.`item_attack` (
+ `item_attack_id` INT NOT NULL AUTO_INCREMENT,
+ `name` VARCHAR(45) NOT NULL,
+ `description` VARCHAR(255) NULL,
+ `weight` DOUBLE NULL,
+ `gold_value` DOUBLE NULL,
+ `type` VARCHAR(45) NULL,
+ `rarity` VARCHAR(45) NULL,
+ `comment` VARCHAR(255) NULL,
+ `flag_active` INT NULL,
+ `timestamp_update` DATETIME NULL,
+ `damage_type` VARCHAR(45) NULL,
+ `dice_count` INT NULL,
+ `dice_sides` INT NULL,
+ `weapon_type` VARCHAR(45) NULL,
+ `attack_range` INT NULL,
+ `bag_id` INT NULL,
+ PRIMARY KEY (`item_attack_id`),
+ INDEX `FK_bag_item_attack_idx` (`bag_id` ASC) VISIBLE,
+ CONSTRAINT `FK_bag_item_attack`
+     FOREIGN KEY (`bag_id`)
+         REFERENCES `rpg_helper`.`bag` (`bag_id`));
+
 
 CREATE TABLE `rpg_helper`.`attack_properties` (
   `item_attack_id` INT NOT NULL AUTO_INCREMENT,
