@@ -3,7 +3,6 @@ package de.kucharczyk.thomas.roles;
 import com.sun.istack.NotNull;
 import de.kucharczyk.thomas.User;
 import de.kucharczyk.thomas.inventory.Bag;
-import de.kucharczyk.thomas.inventory.Item;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -56,16 +55,11 @@ public class PlayerCharacter {
         this.name = name;
     }
 
-    public PlayerCharacter(String name, int carryWeight) {
-        this.name = name;
-        this.carryWeight = carryWeight;
-    }
 
-    public PlayerCharacter(String name, int carryWeight, String race, Date datetimeAdd) {
+    public PlayerCharacter(String name, int carryWeight, String race) {
         this.name = name;
         this.race = race;
         this.carryWeight = carryWeight;
-        this.datetimeAdd = datetimeAdd;
     }
 
     public int getCharacterId() {
@@ -134,6 +128,15 @@ public class PlayerCharacter {
         tempBag.setPlayerCharacter(this);
     }
 
+    public Bag findBagById(int id) {
+        for (Bag tempBag : bagList) {
+            if(tempBag.getBagId() == id) {
+                return tempBag;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "Character{" +
@@ -145,4 +148,6 @@ public class PlayerCharacter {
                 ", user=" + user +
                 '}';
     }
+
+
 }

@@ -38,8 +38,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<PlayerCharacter> playerCharacters = new ArrayList<PlayerCharacter>();
 
-    @OneToMany(mappedBy = "user",cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "user",cascade= CascadeType.ALL)
     private List<Npc> npcList;
 
 
@@ -152,5 +151,23 @@ public class User {
         playerCharacters.add(tempPChara);
 
         tempPChara.setUser(this);
+    }
+    
+    public Npc findNpcById(int id) {
+        for (Npc tempNpc : npcList) {
+            if(tempNpc.getId() == id) {
+                return tempNpc;
+            }
+        }
+        return null;
+    }
+
+    public PlayerCharacter findPCById(int id) {
+        for (PlayerCharacter tempPc : playerCharacters) {
+            if(tempPc.getCharacterId() == id) {
+                return tempPc;
+            }
+        }
+        return null;
     }
 }

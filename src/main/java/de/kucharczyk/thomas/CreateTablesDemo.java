@@ -18,7 +18,7 @@ public class CreateTablesDemo {
         session.beginTransaction();
 
 //        User newUser = new User(1, "hans", "strolch", "hansi", "1234", "test@mail.de");
-        User newUser = new User("one", "two", "hans", "123", "test@mail.de");
+        User newUser = new User("Thomas", "K.", "tk", "123", "tk@mail.de");
 //        User newUser = new User(1, "one", "two", "hans", "123", "test@mail.de");
 //        newUser.toString();
         session.save(newUser);

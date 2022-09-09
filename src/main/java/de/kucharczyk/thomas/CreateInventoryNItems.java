@@ -1,10 +1,10 @@
 package de.kucharczyk.thomas;
 
-import de.kucharczyk.thomas.inventory.Item;
+import de.kucharczyk.thomas.roles.Npc;
 import de.kucharczyk.thomas.roles.PlayerCharacter;
 import org.hibernate.Session;
 
-public class TestAddInventory {
+public class CreateInventoryNItems {
 
     public static void main(String[] args) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -19,7 +19,7 @@ public class TestAddInventory {
 
 
             // TEST 2
-            PlayerCharacter tempChara = session.get(PlayerCharacter.class, 3);
+//            PlayerCharacter tempChara = session.get(PlayerCharacter.class, 3);
 //            System.out.println("======== " + tempChara.getName() + " ==================");
 //
 //            Bag backpack = new Bag("backpack2", 100);
@@ -73,13 +73,15 @@ public class TestAddInventory {
 //
 //            session.save(tempStone);
 //
-//
-//
-//            session.getTransaction().commit();
-//
+ //           // NPC TEST
+//            Npc newNpc = new Npc("Veena");
+//            session.save(newNpc);
+
+//            System.out.println(newNpc.getId());
+            session.getTransaction().commit();
+
 //            System.out.println("Bag Saved!");
 //
-//            List<?> test;
 
 
 

@@ -1,7 +1,6 @@
 package de.kucharczyk.thomas;
 
-import de.kucharczyk.thomas.inventory.Bag;
-import de.kucharczyk.thomas.inventory.ItemMundane;
+import de.kucharczyk.thomas.roles.PlayerCharacter;
 import org.hibernate.Session;
 
 public class FactoryPatternTester {
@@ -14,16 +13,17 @@ public class FactoryPatternTester {
             session.beginTransaction();
 
 
-        ItemFactory itemFactory = new ItemFactory();
-
-        Bag tempBag = session.get(Bag.class, 2);
+//        CharacterFactory itemFactory = new CharacterFactory();
+//
+//        Bag tempBag = session.get(Bag.class, 2);
 
 //        ItemMundane rope = new ItemMundane("Rope", "A rope made of hempen. 30ft long.", 2);
 //
-        itemFactory.createItem("mundane","Rope", "A rope made of hempen. 30ft long.", 2);
+//        itemFactory.createCharacter("mundane","Rope", "A rope made of hempen. 30ft long.", 2);
 
 //        tempBag.add(sword);
-        tempBag.add(rope);
+//        tempBag.add(rope);
+
 
 
         session.getTransaction().commit();
