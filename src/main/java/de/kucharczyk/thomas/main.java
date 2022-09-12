@@ -54,11 +54,14 @@ public class main {
                     break;
                 case 4:
                     scanner.nextLine();
-                    System.out.println("Tryin to use editor");
+                    System.out.println("Trying to use editor");
                     interactor.editInventoryNPC(14, 18);
                     System.out.println();
                     break;
                 case 5:
+                    scanner.nextLine();
+                    System.out.println("Trying to use PC bag editor");
+                    interactor.editInventoryPC(14, 18);
                     System.out.println();
                     break;
                 case 0:

@@ -6,6 +6,7 @@ import de.kucharczyk.thomas.inventory.baseInventoryInteractions;
 import de.kucharczyk.thomas.inventory.pcInventoryInteractor;
 import de.kucharczyk.thomas.roles.Npc;
 import de.kucharczyk.thomas.roles.PlayerCharacter;
+import org.hibernate.MultiIdentifierLoadAccess;
 import org.hibernate.Session;
 
 import java.util.Scanner;
@@ -142,7 +143,7 @@ public class characterInteraction {
 
     }
 
-    public void editInventoryPC(int characterId) {
+    public void editInventoryPC(int userId, int characterId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
 
@@ -194,6 +195,7 @@ public class characterInteraction {
                     }
                 }
             }
+
             if(numberSelection == 2) {
                 System.out.println("Enter Bag ID:");
                 int bagSelection = scanner.nextInt();
@@ -218,7 +220,72 @@ public class characterInteraction {
                 }
             }
 
+            if(numberSelection == 3) {
+                System.out.println("Enter bag id to view content:");
+                int bagSelection = scanner.nextInt();
+                showBagContent(currentPc, bagSelection);
+            }
+
+            if(numberSelection == 4) {
+                System.out.println("Choose a bag:");
+                int bagSelection = scanner.nextInt();
+                scanner.nextLine();
+                System.out.println("Choose the item to delete:");
+                int itemSelection = scanner.nextInt();
+                deleteItemFromBag(currentPc, bagSelection, itemSelection);
+            }
+
+            if(numberSelection == 5) {
+                System.out.println("Exiting bag editor.");
+                active = false;
+            }
+
         } while(active);
+    }
+
+    private void deleteItemFromBag(PlayerCharacter currentPc, int bagSelection, int itemSelection) {
+        if(bagSelection > -1 && currentPc.findBagById(bagSelection) != null) {
+            Bag currentBag = currentPc.findBagById(bagSelection);
+
+            if (itemSelection > -1 && currentBag.findItemById(itemSelection) != null) {
+                ItemMundane tempItem = currentBag.findItemById(itemSelection);
+
+                Session session = HibernateUtil.getSessionFactory().openSession();
+
+                try {
+                    session.beginTransaction();
+
+                    boolean isRemoved = currentBag.getItemList().remove(tempItem);
+
+                    if(isRemoved) {
+                        session.save(currentBag);
+                    }
+                    else {
+                        System.out.println("Error. could not remove the item!");
+                    }
+
+                    session.getTransaction().commit();
+                } finally {
+                    session.close();
+                }
+
+            } else {
+                System.out.println("no corresponding item found.");
+            }
+        }
+    }
+
+    private void showBagContent(PlayerCharacter currentPc, int bagSelection) {
+        if(currentPc.findBagById(bagSelection) != null) {
+            Bag currentBag = currentPc.findBagById(bagSelection);
+            System.out.println("Showing content list:");
+
+            for (ItemMundane tempItem : currentBag.getItemList()
+                 ) {
+                System.out.println(tempItem.toString() + "\n");
+
+            }
+        }
     }
 
     public boolean createItem(Bag currentBag, String name, String description, double weight) {

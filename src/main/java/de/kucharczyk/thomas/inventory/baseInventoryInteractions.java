@@ -10,6 +10,8 @@ public abstract class baseInventoryInteractions {
             System.out.println("Inventory options:");
             System.out.println("1. Show Bags");
             System.out.println("2. Put Item in Bag");
-            System.out.println("3. Exit");
+            System.out.println("3. Show items in bag");
+            System.out.println("4. Delete item from bag");
+            System.out.println("5. Exit");
     }
 }

@@ -110,4 +110,13 @@ public class Bag {
                 ", playerCharacter=" + playerCharacter +
                 '}';
     }
+
+    public ItemMundane findItemById(int itemId) {
+        for (ItemMundane tempItem : itemList) {
+            if(tempItem.getItemId() == itemId) {
+                return tempItem;
+            }
+        }
+        return null;
+    }
 }
