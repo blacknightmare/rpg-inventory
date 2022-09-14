@@ -26,12 +26,12 @@
 
         <!-- Mapping With Model Class Containing Annotations -->
         <mapping class="de.kucharczyk.thomas.User" />
-        <mapping class="de.kucharczyk.thomas.roles.PlayerCharacter" />
-        <mapping class="de.kucharczyk.thomas.roles.Npc" />
-        <mapping class="de.kucharczyk.thomas.inventory.Bag" />
-        <mapping class="de.kucharczyk.thomas.inventory.Item" />
+        <mapping class="de.kucharczyk.thomas.domain.roles.PlayerCharacter" />
+        <mapping class="de.kucharczyk.thomas.domain.roles.Npc" />
+        <mapping class="de.kucharczyk.thomas.domain.inventory.Bag" />
+        <mapping class="de.kucharczyk.thomas.domain.inventory.Item" />
 <!--        <mapping class="de.kucharczyk.thomas.inventory.ItemAttack" />-->
-        <mapping class="de.kucharczyk.thomas.inventory.ItemMundane" />
+        <mapping class="de.kucharczyk.thomas.domain.inventory.ItemMundane" />
 
     </session-factory>
 </hibernate-configuration>

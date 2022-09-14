@@ -1,7 +1,5 @@
 package de.kucharczyk.thomas;
 
-import de.kucharczyk.thomas.roles.Npc;
-import de.kucharczyk.thomas.roles.PlayerCharacter;
 import org.hibernate.Session;
 
 public class CreateInventoryNItems {

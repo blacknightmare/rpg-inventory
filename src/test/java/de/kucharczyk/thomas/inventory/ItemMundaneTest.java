@@ -1,10 +1,12 @@
 package de.kucharczyk.thomas.inventory;
 
+import de.kucharczyk.thomas.domain.inventory.Bag;
+import de.kucharczyk.thomas.domain.inventory.Item;
+import de.kucharczyk.thomas.domain.inventory.ItemMundane;
+import de.kucharczyk.thomas.domain.inventory.ItemType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import javax.persistence.Table;
 
 import static org.junit.jupiter.api.Assertions.*;
 

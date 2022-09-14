@@ -1,8 +1,5 @@
 package de.kucharczyk.thomas;
 
-import de.kucharczyk.thomas.inventory.Item;
-import de.kucharczyk.thomas.inventory.ItemAttack;
-
 import java.util.Scanner;
 
 public class main {

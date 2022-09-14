@@ -1,4 +1,4 @@
-package de.kucharczyk.thomas.inventory;
+package de.kucharczyk.thomas.domain.inventory;
 
 public enum ItemRarity {
     COMMON, UNCOMMON, RARE, VERY_RARE, LEGENDARY, ARTIFACT

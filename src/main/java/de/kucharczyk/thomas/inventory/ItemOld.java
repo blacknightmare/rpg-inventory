@@ -1,5 +1,9 @@
 package de.kucharczyk.thomas.inventory;
 
+import de.kucharczyk.thomas.domain.inventory.Bag;
+import de.kucharczyk.thomas.domain.inventory.ItemRarity;
+import de.kucharczyk.thomas.domain.inventory.ItemType;
+
 import javax.persistence.*;
 import java.util.List;
 

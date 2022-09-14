@@ -1,8 +1,8 @@
 package de.kucharczyk.thomas;
 
 import com.sun.istack.NotNull;
-import de.kucharczyk.thomas.roles.Npc;
-import de.kucharczyk.thomas.roles.PlayerCharacter;
+import de.kucharczyk.thomas.domain.roles.Npc;
+import de.kucharczyk.thomas.domain.roles.PlayerCharacter;
 
 import javax.persistence.*;
 import java.util.ArrayList;

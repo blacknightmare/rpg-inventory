@@ -1,6 +1,6 @@
-package de.kucharczyk.thomas.inventory;
+package de.kucharczyk.thomas.domain.inventory;
 
-import de.kucharczyk.thomas.roles.PlayerCharacter;
+import de.kucharczyk.thomas.domain.roles.PlayerCharacter;
 
 import javax.persistence.*;
 import java.util.ArrayList;

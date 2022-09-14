@@ -1,4 +1,4 @@
-package de.kucharczyk.thomas.inventory;
+package de.kucharczyk.thomas.domain.inventory;
 
 public abstract class BaseInventoryInteractions {
 

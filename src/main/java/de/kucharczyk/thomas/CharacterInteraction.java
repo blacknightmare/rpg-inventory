@@ -1,11 +1,11 @@
 package de.kucharczyk.thomas;
 
-import de.kucharczyk.thomas.inventory.Bag;
-import de.kucharczyk.thomas.inventory.ItemMundane;
-import de.kucharczyk.thomas.inventory.BaseInventoryInteractions;
-import de.kucharczyk.thomas.inventory.PcInventoryInteractor;
-import de.kucharczyk.thomas.roles.Npc;
-import de.kucharczyk.thomas.roles.PlayerCharacter;
+import de.kucharczyk.thomas.domain.inventory.Bag;
+import de.kucharczyk.thomas.domain.inventory.ItemMundane;
+import de.kucharczyk.thomas.domain.inventory.BaseInventoryInteractions;
+import de.kucharczyk.thomas.domain.inventory.PcInventoryInteractor;
+import de.kucharczyk.thomas.domain.roles.Npc;
+import de.kucharczyk.thomas.domain.roles.PlayerCharacter;
 import org.hibernate.Session;
 
 import java.util.Scanner;

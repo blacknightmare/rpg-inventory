@@ -1,8 +1,6 @@
 package de.kucharczyk.thomas;
 
-import de.kucharczyk.thomas.inventory.Item;
-import de.kucharczyk.thomas.inventory.ItemMundane;
-import de.kucharczyk.thomas.inventory.ItemType;
+import de.kucharczyk.thomas.domain.inventory.Item;
 
 public class CharacterFactory {
 

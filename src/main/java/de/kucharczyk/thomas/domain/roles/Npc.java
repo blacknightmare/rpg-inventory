@@ -1,4 +1,4 @@
-package de.kucharczyk.thomas.roles;
+package de.kucharczyk.thomas.domain.roles;
 
 import de.kucharczyk.thomas.User;
 

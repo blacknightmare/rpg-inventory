@@ -1,6 +1,6 @@
 package de.kucharczyk.thomas;
 
-import de.kucharczyk.thomas.roles.PlayerCharacter;
+import de.kucharczyk.thomas.domain.roles.PlayerCharacter;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

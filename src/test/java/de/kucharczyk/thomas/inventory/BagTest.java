@@ -1,7 +1,8 @@
 package de.kucharczyk.thomas.inventory;
 
-import de.kucharczyk.thomas.roles.PlayerCharacter;
-import org.junit.jupiter.api.DisplayName;
+import de.kucharczyk.thomas.domain.inventory.Bag;
+import de.kucharczyk.thomas.domain.inventory.ItemMundane;
+import de.kucharczyk.thomas.domain.roles.PlayerCharacter;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

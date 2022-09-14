@@ -1,10 +1,10 @@
 package de.kucharczyk.thomas.inventory;
 
+import de.kucharczyk.thomas.domain.inventory.ItemType;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
 
 //@MappedSuperclass
 public abstract class Specification {

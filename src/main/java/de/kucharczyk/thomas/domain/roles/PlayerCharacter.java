@@ -1,13 +1,8 @@
-package de.kucharczyk.thomas.roles;
+package de.kucharczyk.thomas.domain.roles;
 
 import com.sun.istack.NotNull;
-import de.kucharczyk.thomas.NameConverter;
 import de.kucharczyk.thomas.User;
-import de.kucharczyk.thomas.inventory.Bag;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import de.kucharczyk.thomas.domain.inventory.Bag;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;

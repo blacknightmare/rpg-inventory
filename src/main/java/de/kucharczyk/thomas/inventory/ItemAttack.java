@@ -1,5 +1,8 @@
 package de.kucharczyk.thomas.inventory;
 
+import de.kucharczyk.thomas.domain.inventory.Item;
+import de.kucharczyk.thomas.domain.inventory.ItemType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
