@@ -1,6 +1,6 @@
 package de.kucharczyk.thomas.inventory;
 
-public interface inventoryInteractor {
+public interface InventoryInteractor {
 
     void printInteractions();
 

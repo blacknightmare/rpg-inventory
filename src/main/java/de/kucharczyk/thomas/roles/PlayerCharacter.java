@@ -1,8 +1,13 @@
 package de.kucharczyk.thomas.roles;
 
 import com.sun.istack.NotNull;
+import de.kucharczyk.thomas.NameConverter;
 import de.kucharczyk.thomas.User;
 import de.kucharczyk.thomas.inventory.Bag;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -10,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+//@Builder
 @Entity
 @Table(name = "player_character")
 public class PlayerCharacter {

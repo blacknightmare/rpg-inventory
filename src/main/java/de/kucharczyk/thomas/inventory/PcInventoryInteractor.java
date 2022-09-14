@@ -1,6 +1,6 @@
 package de.kucharczyk.thomas.inventory;
 
-public class pcInventoryInteractor extends baseInventoryInteractions implements inventoryInteractor{
+public class PcInventoryInteractor extends BaseInventoryInteractions implements InventoryInteractor {
 
     @Override
     public void chooseInteraction(int i) {

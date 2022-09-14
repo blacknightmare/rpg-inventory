@@ -1,5 +1,8 @@
 package de.kucharczyk.thomas;
 
+import de.kucharczyk.thomas.inventory.Item;
+import de.kucharczyk.thomas.inventory.ItemAttack;
+
 import java.util.Scanner;
 
 public class main {
@@ -9,7 +12,7 @@ public class main {
         Scanner scanner = new Scanner(System.in);
 
 
-        characterInteraction interactor = new characterInteraction();
+        CharacterInteraction interactor = new CharacterInteraction();
         boolean running = true;
 
         do
@@ -21,26 +24,27 @@ public class main {
         System.out.println("1 = List assigned Characters");
         System.out.println("2 = create new NPC");
         System.out.println("3 = create new PC");
-        System.out.println("4 = Edit Inventory of NPC");
+//        System.out.println("4 = Edit Inventory of NPC");
         System.out.println("5 = Edit Inventory of PC");
         System.out.println("0 = Exit");
 
 
         int numberSelection = scanner.nextInt();
+            scanner.nextLine();
 
             switch (numberSelection) {
                 case 1:
                     System.out.println(interactor.listCharacters());
                     break;
                 case 2:
-                    scanner.nextLine();
+//                    scanner.nextLine();
                     System.out.println("Enter a Name for the NPC:");
                     String stringInputNPC = scanner.nextLine();
 //                    scanner.nextLine();
                     interactor.createNPC(stringInputNPC);
                     break;
                 case 3:
-                    scanner.nextLine();
+//                    scanner.nextLine();
                     System.out.println("Enter a Name for the PC:");
                     String stringInputPCName = scanner.nextLine();
                     scanner.nextLine();
@@ -53,15 +57,17 @@ public class main {
                     interactor.createPC(stringInputPCName, intInputPC, stringInputPCRace);
                     break;
                 case 4:
-                    scanner.nextLine();
+//                    scanner.nextLine();
                     System.out.println("Trying to use editor");
                     interactor.editInventoryNPC(14, 18);
                     System.out.println();
                     break;
                 case 5:
-                    scanner.nextLine();
-                    System.out.println("Trying to use PC bag editor");
-                    interactor.editInventoryPC(14, 18);
+//                    scanner.nextLine();
+//                    System.out.println("Trying to use PC bag editor");
+                    System.out.println("Give the PC ID:");
+                    int selectedCharacterId = scanner.nextInt();
+                    interactor.editInventoryPC(14, selectedCharacterId);
                     System.out.println();
                     break;
                 case 0:
@@ -74,5 +80,11 @@ public class main {
 
         System.out.println("Shutting down");
     }
+
+//    public void test(Item item) {
+//        if(item instanceof ItemAttack) {
+//            ((ItemAttack) item).addAttackProperties("fuvbd");
+//        }
+//    }
 
 }
