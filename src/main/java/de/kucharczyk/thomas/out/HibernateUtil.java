@@ -1,4 +1,4 @@
-package de.kucharczyk.thomas;
+package de.kucharczyk.thomas.out;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

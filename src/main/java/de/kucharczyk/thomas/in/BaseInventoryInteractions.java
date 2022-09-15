@@ -1,8 +1,8 @@
-package de.kucharczyk.thomas.domain.inventory;
+package de.kucharczyk.thomas.in;
 
 public abstract class BaseInventoryInteractions {
 
-    public void printInteractions() {
+    public void printOptions() {
             System.out.println("==========================");
             System.out.println("Inventory options:");
             System.out.println("1. Show Bags");

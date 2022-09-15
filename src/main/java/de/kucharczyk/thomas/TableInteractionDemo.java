@@ -1,6 +1,7 @@
 package de.kucharczyk.thomas;
 
 import de.kucharczyk.thomas.domain.roles.PlayerCharacter;
+import de.kucharczyk.thomas.out.HibernateUtil;
 import org.hibernate.Session;
 
 import java.util.Date;

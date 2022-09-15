@@ -1,9 +1,7 @@
 package de.kucharczyk.thomas;
 
+import de.kucharczyk.thomas.out.HibernateUtil;
 import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
-
-import de.kucharczyk.thomas.User;
 
 
 public class CreateTablesDemo {

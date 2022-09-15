@@ -1,5 +1,6 @@
 package de.kucharczyk.thomas;
 
+import de.kucharczyk.thomas.out.HibernateUtil;
 import org.hibernate.Session;
 
 public class FactoryPatternTester {
